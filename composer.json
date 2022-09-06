@@ -1,0 +1,38 @@
+{
+    "name": "descom/omnipay-redsys",
+    "description": "Redsys driver for Omnipay",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Omnipay\\Redsys\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Omnipay\\Redsys\\Tests\\": "tests/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Cesar",
+            "email": "cesar@descom.es"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "php": "^8.0",
+        "guzzlehttp/guzzle": "^7.4",
+        "league/omnipay": "^3.2",
+        "omnipay/common": "^3.2",
+        "descom/redsys": "^1.0.1"
+    },
+    "require-dev": {
+        "guzzlehttp/psr7": "^1",
+        "omnipay/tests": "^4.1",
+        "phpunit/phpunit": "^9.5",
+        "friendsofphp/php-cs-fixer": "^3.10",
+        "phpstan/phpstan": "^1.8"
+    }
+}
