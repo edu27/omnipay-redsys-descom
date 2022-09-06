@@ -50,6 +50,36 @@ class CompletedPurchaseRequest extends AbstractRequest
         return $this->setParameter('testMode', $value);
     }
 
+    public function getUrlNotify()
+    {
+        return $this->getParameter('url_notify');
+    }
+
+    public function setUrlNotify($value)
+    {
+        return $this->setParameter('url_notify', $value);
+    }
+
+    public function getUrlReturnSuccessful()
+    {
+        return $this->getParameter('url_return_successful');
+    }
+
+    public function setUrlReturnSuccessful($value)
+    {
+        return $this->setParameter('url_return_successful', $value);
+    }
+
+    public function getUrlReturnDenied()
+    {
+        return $this->getParameter('url_return_denied');
+    }
+
+    public function setUrlReturnDenied($value)
+    {
+        return $this->setParameter('url_return_denied', $value);
+    }
+
     public function getData()
     {
         return $this->httpRequest->request->all();
