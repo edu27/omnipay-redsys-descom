@@ -5,13 +5,12 @@ namespace Omnipay\Redsys\Message;
 use Descom\Redsys\Redsys;
 use Descom\Redsys\Response;
 use Omnipay\Common\Message\AbstractResponse;
-use Omnipay\Common\Message\RequestInterface;
 
 class CompletedPurchaseResponse extends AbstractResponse
 {
     private Response $redsysResponse;
 
-    public function __construct(RequestInterface $request, $data)
+    public function __construct(CompletedPurchaseRequest $request, $data)
     {
         parent::__construct($request, $data);
 
@@ -24,7 +23,7 @@ class CompletedPurchaseResponse extends AbstractResponse
         return $this->redsysResponse->successful();
     }
 
-    private function redsys(RequestInterface $request): Redsys
+    private function redsys(CompletedPurchaseRequest $request): Redsys
     {
         if ($request->getTestMode()) {
             return Redsys::sandbox($this->getMerchantParams($request));
@@ -33,7 +32,7 @@ class CompletedPurchaseResponse extends AbstractResponse
         return Redsys::production($this->getMerchantParams($request));
     }
 
-    private function getMerchantParams(RequestInterface $request): array
+    private function getMerchantParams(CompletedPurchaseRequest $request): array
     {
         return [
             'code' => $request->getMerchantCode(),

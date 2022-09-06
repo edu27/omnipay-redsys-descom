@@ -1,18 +1,12 @@
-includes:
-    - ./vendor/nunomaduro/larastan/extension.neon
-
 parameters:
 
     paths:
         - src
-        - tests
 
     # The level 9 is the highest level
     level: 5
 
     checkMissingIterableValueType: false
 
-    ignoreErrors:
-        - '#Call to an undefined method Omnipay\\Common\\GatewayInterface::getUrlNotify\(\).#'
-        - '#Call to an undefined method Omnipay\\Common\\GatewayInterface::getUrlReturn\(\).#'
-        - '#Property Omnipay\\Redsys\\Tests.* \(Omnipay\\Redsys\\Gateway\) does not accept Omnipay\\Common\\GatewayInterface.#'
+    bootstrapFiles:
+        - vendor/autoload.php

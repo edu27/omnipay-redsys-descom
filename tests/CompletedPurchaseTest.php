@@ -2,7 +2,7 @@
 
 namespace Omnipay\Redsys\Tests;
 
-use Omnipay\Redsys\Gateway;
+use Omnipay\Common\GatewayInterface;
 use Omnipay\Redsys\Message\CompletedPurchaseRequest;
 use Omnipay\Redsys\Message\CompletedPurchaseResponse;
 use Omnipay\Omnipay;
@@ -10,7 +10,7 @@ use PHPUnit\Framework\TestCase;
 
 class CompletedPurchaseTest extends TestCase
 {
-    private Gateway $gateway;
+    private GatewayInterface $gateway;
 
     public function setUp(): void
     {

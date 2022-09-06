@@ -4,7 +4,6 @@ namespace Omnipay\Redsys\Message;
 
 use Descom\Redsys\Redsys;
 use Omnipay\Common\Message\AbstractRequest;
-use Omnipay\Redsys\App\App;
 
 /**
  * PayFast Purchase Request
@@ -104,7 +103,7 @@ class PurchaseRequest extends AbstractRequest
     {
         $redsysRequest = $this->redsys()->generateRedirectPayment(
             $this->getTransactionId(),
-            $this->getAmount(),
+            (float)$this->getAmount(),
             $this->getUrlNotify()
         )
             ->urlSuccessful($this->getUrlReturnSuccessful())

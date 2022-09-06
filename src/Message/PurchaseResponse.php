@@ -46,6 +46,8 @@ class PurchaseResponse extends AbstractResponse implements RedirectResponseInter
 
     public function redirect()
     {
-        return $this->redsysRequest->redirect();
+        echo $this->redsysRequest->redirect();
+
+        return;
     }
 }
