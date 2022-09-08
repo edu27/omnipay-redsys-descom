@@ -15,7 +15,7 @@ class CompletedPurchaseRequest extends AbstractRequest
         return $this->getParameter('merchantCode');
     }
 
-    public function setMerchantCode($value)
+    public function setMerchantCode($value): self
     {
         return $this->setParameter('merchantCode', $value);
     }
@@ -25,7 +25,7 @@ class CompletedPurchaseRequest extends AbstractRequest
         return $this->getParameter('merchantTerminal');
     }
 
-    public function setMerchantTerminal($value)
+    public function setMerchantTerminal($value): self
     {
         return $this->setParameter('merchantTerminal', $value);
     }
@@ -35,7 +35,7 @@ class CompletedPurchaseRequest extends AbstractRequest
         return $this->getParameter('merchantSignatureKey');
     }
 
-    public function setMerchantSignatureKey($value)
+    public function setMerchantSignatureKey($value): self
     {
         return $this->setParameter('merchantSignatureKey', $value);
     }
@@ -45,7 +45,7 @@ class CompletedPurchaseRequest extends AbstractRequest
         return $this->getParameter('testMode');
     }
 
-    public function setTestMode($value)
+    public function setTestMode($value): self
     {
         return $this->setParameter('testMode', $value);
     }
@@ -55,7 +55,7 @@ class CompletedPurchaseRequest extends AbstractRequest
         return $this->getParameter('url_notify');
     }
 
-    public function setUrlNotify($value)
+    public function setUrlNotify($value): self
     {
         return $this->setParameter('url_notify', $value);
     }
@@ -65,7 +65,7 @@ class CompletedPurchaseRequest extends AbstractRequest
         return $this->getParameter('url_return_successful');
     }
 
-    public function setUrlReturnSuccessful($value)
+    public function setUrlReturnSuccessful($value): self
     {
         return $this->setParameter('url_return_successful', $value);
     }
@@ -75,7 +75,7 @@ class CompletedPurchaseRequest extends AbstractRequest
         return $this->getParameter('url_return_denied');
     }
 
-    public function setUrlReturnDenied($value)
+    public function setUrlReturnDenied($value): self
     {
         return $this->setParameter('url_return_denied', $value);
     }
