@@ -2,7 +2,7 @@
 
 namespace Omnipay\Redsys\Tests;
 
-use Omnipay\Redsys\Gateway;
+use Omnipay\Redsys\RedirectGateway;
 use Omnipay\Tests\GatewayTestCase;
 
 class GatewayTest extends GatewayTestCase
@@ -11,7 +11,7 @@ class GatewayTest extends GatewayTestCase
     {
         parent::setUp();
 
-        $this->gateway = new Gateway($this->getHttpClient(), $this->getHttpRequest());
+        $this->gateway = new RedirectGateway($this->getHttpClient(), $this->getHttpRequest());
         $this->gateway->initialize();
     }
 }
