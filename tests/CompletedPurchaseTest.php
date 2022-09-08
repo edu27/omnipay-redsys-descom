@@ -52,6 +52,7 @@ class CompletedPurchaseTest extends TestCase
 
         $this->assertInstanceOf(CompletedPurchaseResponse::class, $response);
         $this->assertTrue($response->isSuccessful());
+        $this->assertEquals('0000', $response->getCode());
         $this->assertEquals('12346', $response->getTransactionId());
         $this->assertEquals('013548', $response->getTransactionReference());
     }
@@ -68,6 +69,6 @@ class CompletedPurchaseTest extends TestCase
 
         $this->assertFalse($response->isSuccessful());
         $this->assertEquals('12347', $response->getTransactionId());
-        $this->assertEquals('SIS9915', $response->getCode());
+        $this->assertEquals('9915', $response->getCode());
     }
 }

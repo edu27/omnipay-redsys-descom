@@ -26,7 +26,7 @@
         "guzzlehttp/guzzle": "^7.4",
         "league/omnipay": "^3.2",
         "omnipay/common": "^3.2",
-        "descom/redsys": "^1.0.1"
+        "descom/redsys": "^1.1.0"
     },
     "require-dev": {
         "guzzlehttp/psr7": "^1",

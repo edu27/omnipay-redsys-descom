@@ -3,7 +3,7 @@
 namespace Omnipay\Redsys\Tests;
 
 use Descom\Redsys\Environments\Sandbox;
-use Omnipay\Redsys\RedirectGateway;
+use Omnipay\Redsys\Gateway;
 use Omnipay\Redsys\Message\PurchaseRequest;
 use Omnipay\Redsys\Message\PurchaseResponse;
 use Omnipay\Omnipay;
@@ -11,13 +11,13 @@ use PHPUnit\Framework\TestCase;
 
 class PurchaseTest extends TestCase
 {
-    private RedirectGateway $gateway;
+    private Gateway $gateway;
 
     public function setUp(): void
     {
         parent::setUp();
 
-        $this->gateway = Omnipay::create('Redsys_Redirect');
+        $this->gateway = Omnipay::create('Redsys');
 
         $this->gateway->initialize([
             'merchantCode' => '999008881',

@@ -24,7 +24,7 @@ class CompletedPurchaseResponse extends AbstractResponse
 
     public function getTransactionId()
     {
-        return $this->redsysResponse->order;
+        return $this->redsysResponse->orderId;
     }
 
     public function getTransactionReference()
@@ -39,7 +39,7 @@ class CompletedPurchaseResponse extends AbstractResponse
 
     public function getCode()
     {
-        return $this->redsysResponse->errorCode;
+        return $this->redsysResponse->responseCode;
     }
 
     private function redsys(CompletedPurchaseRequest $request): Redsys
