@@ -17,10 +17,29 @@ class CompletedPurchaseResponse extends AbstractResponse
         $this->redsysResponse = $this->redsys($request)->capturePaymentNotification($data);
     }
 
-
     public function isSuccessful()
     {
         return $this->redsysResponse->successful();
+    }
+
+    public function getTransactionId()
+    {
+        return $this->redsysResponse->order;
+    }
+
+    public function getTransactionReference()
+    {
+        return $this->redsysResponse->authorizationCode;
+    }
+
+    public function getMessage()
+    {
+        return $this->redsysResponse->errorCode;
+    }
+
+    public function getCode()
+    {
+        return $this->redsysResponse->errorCode;
     }
 
     private function redsys(CompletedPurchaseRequest $request): Redsys
