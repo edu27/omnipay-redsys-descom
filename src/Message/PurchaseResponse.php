@@ -3,7 +3,6 @@
 namespace Omnipay\Redsys\Message;
 
 use Descom\Redsys\Payments\RedirectRequest;
-use Descom\Redsys\Response;
 use Omnipay\Common\Message\AbstractResponse;
 use Omnipay\Common\Message\RedirectResponseInterface;
 use Omnipay\Common\Message\RequestInterface;

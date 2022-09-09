@@ -3,10 +3,10 @@
 namespace Omnipay\Redsys\Tests;
 
 use Descom\Redsys\Environments\Sandbox;
+use Omnipay\Omnipay;
 use Omnipay\Redsys\Gateway;
 use Omnipay\Redsys\Message\PurchaseRequest;
 use Omnipay\Redsys\Message\PurchaseResponse;
-use Omnipay\Omnipay;
 use PHPUnit\Framework\TestCase;
 
 class PurchaseTest extends TestCase
@@ -50,7 +50,7 @@ class PurchaseTest extends TestCase
 
         $this->assertInstanceOf(PurchaseResponse::class, $response);
         $this->assertTrue($response->isRedirect());
-        $this->assertEquals((new Sandbox)->getUrlRedirect(), $response->getRedirectUrl());
+        $this->assertEquals((new Sandbox())->getUrlRedirect(), $response->getRedirectUrl());
     }
 
     public function testPurchaseRedirect()

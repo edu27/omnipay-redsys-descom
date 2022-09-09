@@ -3,7 +3,6 @@
 namespace Omnipay\Redsys\Message;
 
 use Omnipay\Common\Message\AbstractRequest;
-use Omnipay\Redsys\App\App;
 
 /**
  * PayFast Purchase Request

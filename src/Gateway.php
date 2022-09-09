@@ -15,7 +15,7 @@ class Gateway extends AbstractGateway
 
     public function getDefaultParameters()
     {
-        return array(
+        return [
             'merchantCode' => '',
             'merchantTerminal' => '',
             'merchantSignatureKey' => '',
@@ -23,7 +23,7 @@ class Gateway extends AbstractGateway
             'url_notify' => '',
             'url_return_successful' => '',
             'url_return_denied' => '',
-        );
+        ];
     }
 
     public function getMerchantCode()

@@ -4,9 +4,8 @@ namespace Omnipay\Redsys\Tests;
 
 use Descom\Redsys\Exceptions\SignatureInvalid;
 use Omnipay\Common\GatewayInterface;
-use Omnipay\Redsys\Message\CompletedPurchaseRequest;
-use Omnipay\Redsys\Message\CompletedPurchaseResponse;
 use Omnipay\Omnipay;
+use Omnipay\Redsys\Message\CompletedPurchaseResponse;
 use PHPUnit\Framework\TestCase;
 
 class CompletedPurchaseTest extends TestCase
