@@ -67,12 +67,12 @@ class PurchaseTest extends TestCase
 
 
         $this->assertStringContainsString(
-            '<input type="hidden" name="Ds_Signature" value="y5abW9/FRbzl8KihT3uz8JVMTF1z+9wUFhs9IHfIFRM=" />',
+            '<input type="hidden" name="Ds_Signature" value="mseyOIMoLEjI3bcQukNeZmoPhLhQDYKt3+A8PsjGVDg=" />',
             $responseHtml
         );
 
         $this->assertStringContainsString(
-            '<input type="hidden" name="Ds_MerchantParameters" value="eyJEU19NRVJDSEFOVF9NRVJDSEFOVENPREUiOiIiLCJEU19NRVJDSEFOVF9URVJNSU5BTCI6IjEiLCJEU19NRVJDSEFOVF9UUkFOU0FDVElPTlRZUEUiOiIwIiwiRFNfTUVSQ0hBTlRfQU1PVU5UIjoiMTIwMCIsIkRTX01FUkNIQU5UX0NVUlJFTkNZIjoiOTc4IiwiRFNfTUVSQ0hBTlRfT1JERVIiOiIxIiwiRFNfTUVSQ0hBTlRfTUVSQ0hBTlRVUkwiOiIiLCJEU19NRVJDSEFOVF9VUkxPSyI6IiIsIkRTX01FUkNIQU5UX1VSTEtPIjoiIn0=" />',
+            '<input type="hidden" name="Ds_MerchantParameters" value="eyJEU19NRVJDSEFOVF9NRVJDSEFOVENPREUiOiI5OTkwMDg4ODEiLCJEU19NRVJDSEFOVF9URVJNSU5BTCI6IjEiLCJEU19NRVJDSEFOVF9UUkFOU0FDVElPTlRZUEUiOiIwIiwiRFNfTUVSQ0hBTlRfQU1PVU5UIjoiMTIwMCIsIkRTX01FUkNIQU5UX0NVUlJFTkNZIjoiOTc4IiwiRFNfTUVSQ0hBTlRfT1JERVIiOiIxIiwiRFNfTUVSQ0hBTlRfTUVSQ0hBTlRVUkwiOiIiLCJEU19NRVJDSEFOVF9VUkxPSyI6IiIsIkRTX01FUkNIQU5UX1VSTEtPIjoiIn0=" />',
             $responseHtml
         );
     }
