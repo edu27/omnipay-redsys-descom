@@ -124,9 +124,9 @@ class PurchaseRequest extends AbstractRequest
     private function getMerchantParams(): array
     {
         return [
-            'merchantCode' => $this->getMerchantCode(),
-            'merchantTerminal' => $this->getMerchantTerminal(),
-            'merchantSignatureKey' => $this->getMerchantSignatureKey(),
+            'code' => $this->getMerchantCode(),
+            'terminal' => $this->getMerchantTerminal(),
+            'signatureKey' => $this->getMerchantSignatureKey(),
         ];
     }
 }
