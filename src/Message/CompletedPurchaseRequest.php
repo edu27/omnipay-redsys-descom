@@ -9,6 +9,36 @@ use Omnipay\Common\Message\AbstractRequest;
  */
 class CompletedPurchaseRequest extends AbstractRequest
 {
+    public function getDsSignature()
+    {
+        return $this->getParameter('Ds_Signature');
+    }
+
+    public function setDsSignature($value): self
+    {
+        return $this->setParameter('Ds_Signature', $value);
+    }
+
+    public function getDsMerchantParameters()
+    {
+        return $this->getParameter('Ds_MerchantParameters');
+    }
+
+    public function setDsMerchantParameters($value): self
+    {
+        return $this->setParameter('Ds_MerchantParameters', $value);
+    }
+
+    public function getDsSignatureVersion()
+    {
+        return $this->getParameter('Ds_SignatureVersion');
+    }
+
+    public function setDsSignatureVersion($value): self
+    {
+        return $this->setParameter('Ds_SignatureVersion', $value);
+    }
+
     public function getMerchantCode()
     {
         return $this->getParameter('merchantCode');
@@ -81,7 +111,11 @@ class CompletedPurchaseRequest extends AbstractRequest
 
     public function getData()
     {
-        return $this->httpRequest->request->all();
+        return [
+            'Ds_SignatureVersion' => $this->getDsSignatureVersion(),
+            'Ds_MerchantParameters' => $this->getDsMerchantParameters(),
+            'Ds_Signature' => $this->getDsSignature(),
+        ];
     }
 
     public function sendData($data)
