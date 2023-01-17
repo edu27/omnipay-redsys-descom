@@ -56,6 +56,23 @@ class CompletedPurchaseTest extends TestCase
         $this->assertEquals('013548', $response->getTransactionReference());
     }
 
+    public function testCompletedPurchaseResponseSuccessfulV2()
+    {
+        $request = $this->gateway->completePurchase([
+            'Ds_SignatureVersion' => 'HMAC_SHA256_V1',
+            'Ds_MerchantParameters' => 'eyJEc19EYXRlIjoiMDUlMkYwOSUyRjIwMjIiLCJEc19Ib3VyIjoiMTUlM0ExMSIsIkRzX1NlY3VyZVBheW1lbnQiOiIxIiwiRHNfQ2FyZF9OdW1iZXIiOiI0NTQ4ODEqKioqKiowMDAzIiwiRHNfQ2FyZF9Db3VudHJ5IjoiNzI0IiwiRHNfQW1vdW50IjoiMTQ1IiwiRHNfQ3VycmVuY3kiOiI5NzgiLCJEc19PcmRlciI6IjEyMzQ2IiwiRHNfTWVyY2hhbnRDb2RlIjoiOTk5MDA4ODgxIiwiRHNfVGVybWluYWwiOiIwMDEiLCJEc19SZXNwb25zZSI6IjAwMDAiLCJEc19NZXJjaGFudERhdGEiOiIiLCJEc19UcmFuc2FjdGlvblR5cGUiOiIwIiwiRHNfQ29uc3VtZXJMYW5ndWFnZSI6IjEiLCJEc19BdXRob3Jpc2F0aW9uQ29kZSI6IjAxMzU0OCIsIkRzX0NhcmRfQnJhbmQiOiIxIiwiRHNfUHJvY2Vzc2VkUGF5TWV0aG9kIjoiMSIsIkRzX0NvbnRyb2xfMTY2MjM4MzQ2Nzc4MyI6IjE2NjIzODM0Njc3ODMifQ==',
+            'Ds_Signature' => 'DtTMmr_rkXYGRvQiv3cQI2cYKoi-eLmwEsIQtPGGogg=',
+        ]);
+
+        $response = $request->send();
+
+        $this->assertInstanceOf(CompletedPurchaseResponse::class, $response);
+        $this->assertTrue($response->isSuccessful());
+        $this->assertEquals('0000', $response->getCode());
+        $this->assertEquals('12346', $response->getTransactionId());
+        $this->assertEquals('013548', $response->getTransactionReference());
+    }
+
     public function testCompletedPurchaseResponseDenied()
     {
         $request = $this->gateway->completePurchase();
