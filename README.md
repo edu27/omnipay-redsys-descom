@@ -38,6 +38,31 @@ $request = $gateway->purchase([
 $response->redirect();
 ```
 
+### Create purchase request with Bizum
+
+```php
+use Omnipay\Omnipay;
+
+$gateway = Omnipay::create('Redsys');
+
+$gateway->initialize([
+    'merchantCode' => '999008881',
+    'merchantTerminal' => '1',
+    'merchantSignatureKey' => 'sq7HjrUOBfKmC576ILgskD5srU870gJ7',
+    'testMode' => true,
+    'merchantPaymethods' => 'z',
+]);
+
+$request = $gateway->purchase([
+                'amount' => 12.50,
+                'description' => 'Test purchase',
+                'transactionId' => 1,
+                'notifyUrl' => 'http://localhost:8080/gateway/notify',
+            ])->send();
+
+$response->redirect();
+```
+
 ### Complete purchase request
 
 ```php

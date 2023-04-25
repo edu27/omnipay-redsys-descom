@@ -80,6 +80,16 @@ class PurchaseRequest extends AbstractRequest
         return $this->setParameter('url_return_denied', $value);
     }
 
+    public function getMerchantPaymethods()
+    {
+        return $this->getParameter('merchant_paymethods');
+    }
+
+    public function setMerchantPaymethods($value): self
+    {
+        return $this->setParameter('merchant_paymethods', $value);
+    }
+
     public function getData()
     {
         $this->validate(
@@ -108,6 +118,10 @@ class PurchaseRequest extends AbstractRequest
         )
             ->urlSuccessful($this->getUrlReturnSuccessful())
             ->urlDenied($this->getUrlReturnDenied());
+
+        if ($this->getMerchantPaymethods()) {
+            $redsysRequest->merchantPaymethods($this->getMerchantPaymethods());
+        }
 
         return $this->response = new PurchaseResponse($this, $data, $redsysRequest);
     }

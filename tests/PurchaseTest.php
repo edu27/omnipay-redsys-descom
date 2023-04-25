@@ -3,6 +3,7 @@
 namespace Omnipay\Redsys\Tests;
 
 use Descom\Redsys\Environments\Sandbox;
+use Omnipay\Common\Message\AbstractResponse;
 use Omnipay\Omnipay;
 use Omnipay\Redsys\Gateway;
 use Omnipay\Redsys\Message\PurchaseRequest;
@@ -12,6 +13,7 @@ use PHPUnit\Framework\TestCase;
 class PurchaseTest extends TestCase
 {
     private Gateway $gateway;
+    private Gateway $gatewayBizum;
 
     public function setUp(): void
     {
@@ -24,6 +26,16 @@ class PurchaseTest extends TestCase
             'merchantTerminal' => '1',
             'merchantSignatureKey' => 'sq7HjrUOBfKmC576ILgskD5srU870gJ7',
             'testMode' => true,
+        ]);
+
+        $this->gatewayBizum = Omnipay::create('Redsys');
+
+        $this->gatewayBizum->initialize([
+            'merchantCode' => '999008881',
+            'merchantTerminal' => '1',
+            'merchantSignatureKey' => 'sq7HjrUOBfKmC576ILgskD5srU870gJ7',
+            'testMode' => true,
+            'merchantPaymethods' => 'z',
         ]);
     }
 
@@ -51,6 +63,23 @@ class PurchaseTest extends TestCase
         $this->assertInstanceOf(PurchaseResponse::class, $response);
         $this->assertTrue($response->isRedirect());
         $this->assertEquals((new Sandbox())->getUrlRedirect(), $response->getRedirectUrl());
+
+        $responseParameters = $this->gerParameters($response);
+
+        $this->assertEquals('C', $responseParameters['DS_MERCHANT_PAYMETHODS'] ?? 'C');
+    }
+
+    public function testPurchaseSendBizum()
+    {
+        $response = $this->gatewayBizum->purchase([
+            'amount' => '12.00',
+            'description' => 'Test purchase',
+            'transactionId' => 1,
+        ])->send();
+
+        $responseParameters = $this->gerParameters($response);
+
+        $this->assertEquals('z', $responseParameters['DS_MERCHANT_PAYMETHODS']);
     }
 
     public function testPurchaseRedirect()
@@ -75,5 +104,10 @@ class PurchaseTest extends TestCase
             '<input type="hidden" name="Ds_MerchantParameters" value="eyJEU19NRVJDSEFOVF9NRVJDSEFOVENPREUiOiI5OTkwMDg4ODEiLCJEU19NRVJDSEFOVF9URVJNSU5BTCI6IjEiLCJEU19NRVJDSEFOVF9UUkFOU0FDVElPTlRZUEUiOiIwIiwiRFNfTUVSQ0hBTlRfQU1PVU5UIjoiMTIwMCIsIkRTX01FUkNIQU5UX0NVUlJFTkNZIjoiOTc4IiwiRFNfTUVSQ0hBTlRfT1JERVIiOiIxIiwiRFNfTUVSQ0hBTlRfTUVSQ0hBTlRVUkwiOiIiLCJEU19NRVJDSEFOVF9VUkxPSyI6IiIsIkRTX01FUkNIQU5UX1VSTEtPIjoiIn0=" />',
             $responseHtml
         );
+    }
+
+    private function gerParameters(AbstractResponse $redirectData): array
+    {
+        return json_decode(base64_decode($redirectData->getRedirectData()['Ds_MerchantParameters']), true);
     }
 }
