@@ -43,7 +43,7 @@ $response->redirect();
 ```php
 use Omnipay\Omnipay;
 
-$gateway = Omnipay::create('Redsys');
+$gateway = Omnipay::create('Bizum');
 
 $gateway->initialize([
     'merchantCode' => '999008881',
