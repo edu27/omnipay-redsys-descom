@@ -96,6 +96,16 @@ class Gateway extends AbstractGateway
         return $this->setParameter('url_return_denied', $value);
     }
 
+    public function getMerchantPaymethods()
+    {
+        return $this->getParameter('merchant_paymethods');
+    }
+
+    public function setMerchantPaymethods($value): self
+    {
+        return $this->setParameter('merchant_paymethods', $value);
+    }
+
     public function purchase(array $parameters = [])
     {
         return $this->createRequest(PurchaseRequest::class, $parameters);
