@@ -24,7 +24,6 @@ jobs:
         extensions: dom, curl, libxml, mbstring, zip, pcntl, bcmath, intl, exif
         coverage: xdebug
 
-
     - name: Validate composer.json and composer.lock
       run: composer validate
 
