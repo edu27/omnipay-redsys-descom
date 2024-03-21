@@ -7,21 +7,20 @@ on:
     branches: [master]
 
 jobs:
-  phpunit:
-
+  tests:
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        php-versions: ['8.2', '8.1', '8.0']
+        php: [8.0, 8.1, 8.2, 8.3]
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
 
     - name: Setup PHP
       uses: shivammathur/setup-php@v2
       with:
-        php-version: ${{ matrix.php-versions }}
+        php-version: ${{ matrix.php }}
         extensions: dom, curl, libxml, mbstring, zip, pcntl, bcmath, intl, exif
         coverage: xdebug
 
@@ -31,12 +30,12 @@ jobs:
 
     - name: Cache Composer packages
       id: composer-cache
-      uses: actions/cache@v2
+      uses: actions/cache@v3
       with:
         path: vendor
-        key: ${{ runner.os }}-php-${{ matrix.php-versions }}-${{ hashFiles('**/composer.lock') }}
+        key: ${{ runner.os }}-php-${{ matrix.php }}-${{ hashFiles('**/composer.lock') }}
         restore-keys: |
-          ${{ runner.os }}-php-${{ matrix.php-versions }}
+          ${{ runner.os }}-php-${{ matrix.php }}
 
     - name: Install dependencies
       if: steps.composer-cache.outputs.cache-hit != 'true'
