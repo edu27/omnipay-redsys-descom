@@ -23,7 +23,7 @@ jobs:
           php-version: ${{ matrix.php }}
           extensions: dom, curl, libxml, mbstring, zip, pcntl, bcmath, intl, exif
 
-      - name: Validate composer.json and composer.lock
+      - name: Validate composer.json
         run: composer validate
 
       - name: Cache Composer packages
