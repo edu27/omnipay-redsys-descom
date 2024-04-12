@@ -1,4 +1,4 @@
-name: tests
+name: Tests
 
 on:
   push:
@@ -7,15 +7,17 @@ on:
     branches: [master]
 
 jobs:
-  test:
+  phpunit:
     runs-on: ubuntu-latest
 
     strategy:
+      fail-fast: true
       matrix:
         php: [8.1, 8.2, 8.3]
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
@@ -28,11 +30,12 @@ jobs:
 
       - name: Cache Composer packages
         id: composer-cache
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: vendor
           key: ${{ runner.os }}-php-${{ matrix.php }}-${{ hashFiles('**/composer.lock') }}
-          restore-keys: ${{ runner.os }}-php-${{ matrix.php }}
+          restore-keys: |
+            ${{ runner.os }}-php-${{ matrix.php }}-
 
       - name: Install dependencies
         if: steps.composer-cache.outputs.cache-hit != 'true'
