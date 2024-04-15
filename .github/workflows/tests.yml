@@ -39,7 +39,7 @@ jobs:
       - name: Install dependencies
         if: steps.composer-cache.outputs.cache-hit != 'true'
         run: |
-          composer install
+          composer install --no-interaction --no-progress
           composer dump
 
       - name: Run test phpunit
