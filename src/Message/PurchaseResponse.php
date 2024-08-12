@@ -2,7 +2,7 @@
 
 namespace Omnipay\Redsys\Message;
 
-use Descom\Redsys\Payments\RedirectRequest;
+use Descom\Redsys\Payments\Redirect\RedirectRequest;
 use Omnipay\Common\Message\AbstractResponse;
 use Omnipay\Common\Message\RedirectResponseInterface;
 use Omnipay\Common\Message\RequestInterface;
