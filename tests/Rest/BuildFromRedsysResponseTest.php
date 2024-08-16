@@ -18,6 +18,7 @@ class BuildFromRedsysResponseTest extends TestCase
             'Ds_Response' => '0000',
             'Ds_Amount' => '145',
             'Ds_Order' => '12346',
+            'Ds_AuthorisationCode' => '145',
         ];
 
         $redsysResponse = new Response(MerchantBuilder::testing(), new Parameters($redsysData));
@@ -27,9 +28,10 @@ class BuildFromRedsysResponseTest extends TestCase
         $this->assertTrue($omnipayResponse->isSuccessful());
         $this->assertEquals('0000', $omnipayResponse->getCode());
         $this->assertEquals('12346', $omnipayResponse->getTransactionId());
+        $this->assertEquals('145', $omnipayResponse->getTransactionReference());
     }
 
-    public function testGenerateOmnipayResponseFromRedsysResponseFalied()
+    public function testGenerateOmnipayResponseFromRedsysResponseFailed()
     {
         $redsysData = [
             'Ds_MerchantCode' => '999008881',
