@@ -9,7 +9,7 @@ Redsys driver for Omnipay
 ## Instalation
 
 ```sh
-composer require descom/omnipay-redsys
+composer require edu27/omnipay-redsys-descom
 ```
 
 ## Basic Usage
