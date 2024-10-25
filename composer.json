@@ -1,5 +1,5 @@
 {
-    "name": "descom/omnipay-redsys",
+    "name": "edu27/omnipay-redsys-descom",
     "description": "Redsys driver for Omnipay",
     "type": "library",
     "license": "MIT",
